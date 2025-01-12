@@ -1,20 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  server: { port: 5173 },
+  root: path.resolve(__dirname, '.'),
   build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
     rollupOptions: {
-      external: ['react-router-dom'], // Remove react-toastify from external
-    },
+      input: path.resolve(__dirname, 'index.html'),
+    }
   },
   resolve: {
     alias: {
-      'react-toastify': 'react-toastify',
+      '@': path.resolve(__dirname, './src'),
     },
-  },
-  optimizeDeps: {
-    include: ['react-toastify'],
-  },
+  }
 })
