@@ -10,4 +10,11 @@ export default defineConfig({
       external: ['react-router-dom','react-toastify'],
     },
   },
+  css: {
+    preprocessorOptions: {
+      css: {
+        modules: true,
+      },
+    },
+  },
 })
